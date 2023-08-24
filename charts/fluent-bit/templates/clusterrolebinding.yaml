@@ -13,4 +13,10 @@ subjects:
   - kind: ServiceAccount
     name: {{ include "fluent-bit.serviceAccountName" . }}
     namespace: {{ .Release.Namespace }}
+{{- if and ( .Capabilities.APIVersions.Has "monitoring.coreos.com/v1" ) .Values.serviceMonitor.enabled }}
+  {{- with .Values.serviceMonitor.prometheusServiceAccount }}
+  - kind: ServiceAccount
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+{{- end -}}
 {{- end -}}

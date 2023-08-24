@@ -103,6 +103,9 @@ service:
 
 serviceMonitor:
   enabled: false
+  # prometheusServiceAccount:
+  #   name: prometheus-k8s
+  #   namespace: monitoring
   #   namespace: monitoring
   #   interval: 10s
   #   scrapeTimeout: 10s
